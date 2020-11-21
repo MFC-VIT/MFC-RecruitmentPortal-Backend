@@ -5,4 +5,5 @@ app_name = 'api'
 
 urlpatterns = [
     path('technicalquestions/', views.sendtechnicalquestions),
+    path('managementquestions/', views.sendmanagementquestions),
 ]
