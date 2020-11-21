@@ -20,3 +20,19 @@ def sendtechnicalquestions(request):
             'type':typeserializer.data
         }
         return Response(finalquestions)
+
+@api_view(['GET'])
+def sendmanagementquestions(request):
+    if request.method == 'GET':
+        mang_domain = Domain.objects.get(domain_name='Management')
+        mcqs = mcqQuestions.objects.filter(domain=mang_domain)
+        finalmcqs = random.sample(list(mcqs), 2)
+        mcqserializer = mcqSerializer(finalmcqs, many=True)
+        type = typeQuestions.objects.filter(domain=mang_domain)
+        finaltype = random.sample(list(type), 2)
+        typeserializer = typeSerializer(finaltype, many=True)
+        finalquestions = {
+            'mcq':mcqserializer.data,
+            'type':typeserializer.data
+        }
+        return Response(finalquestions)
