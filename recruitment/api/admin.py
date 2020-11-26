@@ -6,7 +6,7 @@ admin.site.register(User)
 # Register your models here.
 @admin.register(Domain)
 class DomainAdmin(admin.ModelAdmin):
-    list_display = ['domain_name']
+    list_display = ['domain_name','id']
 
 @admin.register(mcqQuestions)
 class mcqQuestionsAdmin(admin.ModelAdmin):

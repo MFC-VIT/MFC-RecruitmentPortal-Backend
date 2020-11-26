@@ -1,6 +1,5 @@
 from rest_framework import serializers
 from .models import Domain,mcqQuestions,typeQuestions,Responses,User
-# from rest_framework.authtoken.models import Token
 from django.contrib import auth
 from rest_framework.exceptions import AuthenticationFailed
 
@@ -27,13 +26,6 @@ class RegisterSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         return User.objects.create_user(**validated_data)
-
-# class EmailVerificationSerializer(serializers.ModelSerializer):
-#     token = serializers.CharField(max_length=555)
-#
-#     class Meta:
-#         model = User
-#         fields = ['token']
 
 class LoginSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(max_length=255, min_length=3)
@@ -73,3 +65,8 @@ class typeSerializer(serializers.ModelSerializer):
     class Meta:
         model = typeQuestions
         fields = ('question_id', 'question')
+
+class responseSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Responses
+        fields = ('domain','question','answer')
