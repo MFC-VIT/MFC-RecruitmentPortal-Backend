@@ -1,6 +1,7 @@
 from django.contrib import admin
-from .models import (Domain,mcqQuestions,typeQuestions,Responses)
+from .models import (Domain,mcqQuestions,typeQuestions,Responses,User)
 
+admin.site.register(User)
 
 # Register your models here.
 @admin.register(Domain)
