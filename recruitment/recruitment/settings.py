@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'drf_yasg',
     'rest_framework',
     'api',
+    'rest_framework_simplejwt.token_blacklist',
 ]
 
 MIDDLEWARE = [
@@ -103,7 +104,7 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': datetime.timedelta(days=1),
+    'ACCESS_TOKEN_LIFETIME': datetime.timedelta(minutes=1),
     'REFRESH_TOKEN_LIFETIME': datetime.timedelta(days=1),
 }
 
@@ -125,6 +126,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+GOOGLE_CLIENT_ID = "http://1037045553105-i9e2ui0j5d3voblk27cuudpuveciqp76.apps.googleusercontent.com/"
+
+GOOGLE_SECRET_KEY = "3UnE8UrFLCjYkChRbUVTRahV"
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
