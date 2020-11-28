@@ -32,8 +32,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(max_length=255, unique=True, db_index=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
-    # created_at = models.DateTimeField(auto_now_add=True)
-    # updated_at = models.DateTimeField(auto_now=True)
+    is_verified = models.BooleanField(default=False)
     technical_test = models.BooleanField(default=False)
     management_test = models.BooleanField(default=False)
     design_test = models.BooleanField(default=False)
@@ -52,10 +51,6 @@ class User(AbstractBaseUser, PermissionsMixin):
             'refresh':str(refresh),
             'access':str(refresh.access_token)
         }
-
-
-
-# Create your models here.
 
 class Domain(models.Model):
     domain_name = models.CharField(max_length=250)
