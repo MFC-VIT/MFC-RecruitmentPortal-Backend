@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'drf_yasg',
     'rest_framework',
     'api',
@@ -53,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'recruitment.urls'
@@ -104,7 +106,7 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': datetime.timedelta(minutes=1),
+    'ACCESS_TOKEN_LIFETIME': datetime.timedelta(days=1),
     'REFRESH_TOKEN_LIFETIME': datetime.timedelta(days=1),
 }
 
@@ -126,9 +128,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-GOOGLE_CLIENT_ID = "http://1037045553105-i9e2ui0j5d3voblk27cuudpuveciqp76.apps.googleusercontent.com/"
+CORS_ORIGIN_WHITELIST = [
+    "http://127.0.0.1:8000",
+]
 
-GOOGLE_SECRET_KEY = "3UnE8UrFLCjYkChRbUVTRahV"
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
