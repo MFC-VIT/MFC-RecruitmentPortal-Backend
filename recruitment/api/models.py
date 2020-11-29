@@ -35,6 +35,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_verified = models.BooleanField(default=False)
     technical_test = models.BooleanField(default=False)
     management_test = models.BooleanField(default=False)
+    editorial_test = models.BooleanField(default=False)
     design_test = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'email'
