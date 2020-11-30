@@ -35,12 +35,12 @@ class RegisterView(generics.GenericAPIView):
         user_data = serializer.data
         user = User.objects.get(email=user_data['email'])
         token = RefreshToken.for_user(user).access_token
-        current_site = get_current_site(request).domain
-        relativeLink = reverse('api:email-verify')
-        absurl = 'http://'+current_site+relativeLink+"?token="+str(token)
-        email_body = 'Hi '+ user.username + ' Use the link below to verify your email \n' + absurl
+        # current_site = get_current_site(request).domain
+        # relativeLink = reverse('api:email-verify')
+        # absurl = 'http://'+current_site+relativeLink+"?token="+str(token)
+        email_body = 'Hi '+ user.username + ' Use the activation code below to verify your email \n' + str(token)
         data = {'email_body': email_body, 'to_email': user.email,
-                'email_subject': 'Verify your email'}
+                'email_subject': 'Verify your email for MFC recruitment portal'}
 
         Util.send_email(data)
         return Response(user_data, status=status.HTTP_201_CREATED)
