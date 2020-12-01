@@ -1,26 +1,30 @@
 from django.db import models
 from django.contrib.auth.models import (AbstractBaseUser, BaseUserManager, PermissionsMixin)
 from rest_framework_simplejwt.tokens import RefreshToken
+from django.core.validators import MaxValueValidator, MinValueValidator
+from phonenumber_field.modelfields import PhoneNumberField
+
 # Create your models here.
 
 class UserManager(BaseUserManager):
 
-    def create_user(self, username, email, password=None):
+    def create_user(self, username, email, phone_number, password=None):
         if username is None:
             raise TypeError('Users should have a username')
         if email is None:
             raise TypeError('Users should have a Email')
 
-        user = self.model(username=username, email=self.normalize_email(email))
+        user = self.model(username=username, email=self.normalize_email(email), phone_number=phone_number)
         user.set_password(password)
         user.save()
         return user
 
-    def create_superuser(self, username, email, password=None):
+    def create_superuser(self, username, email, password):
         if password is None:
             raise TypeError('Password should not be none')
 
-        user = self.create_user(username, email, password)
+        phone_number = '1234567890'
+        user = self.create_user(username, email, phone_number, password)
         user.is_superuser = True
         user.is_staff = True
         user.save()
@@ -30,6 +34,7 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=255, unique=True, db_index=True)
     email = models.EmailField(max_length=255, unique=True, db_index=True)
+    phone_number = PhoneNumberField()
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     is_verified = models.BooleanField(default=False)
@@ -37,6 +42,10 @@ class User(AbstractBaseUser, PermissionsMixin):
     management_test = models.BooleanField(default=False)
     editorial_test = models.BooleanField(default=False)
     design_test = models.BooleanField(default=False)
+    technical_test_passed = models.BooleanField(default=False)
+    management_test_passed = models.BooleanField(default=False)
+    editorial_test_passed = models.BooleanField(default=False)
+    design_test_passed = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
