@@ -14,6 +14,7 @@ import datetime
 from pathlib import Path
 from datetime import timedelta
 import os
+import django_heroku
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -130,9 +131,17 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-CORS_ORIGIN_WHITELIST = [
+CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:8000",
+    "http://127.0.0.1:8081",
+    "http://localhost:8081",
 ]
+
+CSRF_TRUSTED_ORIGINS = [
+    'localhost:8081',
+]
+
+CORS_ALLOW_ALL_ORIGINS = True
 
 
 # Internationalization
@@ -160,3 +169,4 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+django_heroku.settings(locals())
