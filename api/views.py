@@ -22,7 +22,17 @@ from django.shortcuts import redirect
 from .renderers import UserRenderer
 
 # Create your views here.
+##########################################################
 
+
+def generate_otp():
+    key = random.randint(100,999)
+    counter = random.randint(100,999)
+    otp_str = str(key) + str(counter)
+    otp = int(otp_str)
+    return otp
+
+###########################################################
 class RegisterView(generics.GenericAPIView):
 
     serializer_class = RegisterSerializer
@@ -34,11 +44,11 @@ class RegisterView(generics.GenericAPIView):
         serializer.save()
         user_data = serializer.data
         user = User.objects.get(email=user_data['email'])
+        user_otp = generate_otp()
+        user.otp = user_otp
+        user.save()
         token = RefreshToken.for_user(user).access_token
-        # current_site = get_current_site(request).domain
-        # relativeLink = reverse('api:email-verify')
-        # absurl = 'http://'+current_site+relativeLink+"?token="+str(token)
-        email_body = 'Hi '+ user.username + ' Use the activation code below to verify your email \n' + str(token)
+        email_body = 'Hi '+ user.username + ' Use the OTP below to verify your email \n' + str(user_otp)
         data = {'email_body': email_body, 'to_email': user.email,
                 'email_subject': 'Verify your email for MFC recruitment portal'}
 
@@ -47,23 +57,23 @@ class RegisterView(generics.GenericAPIView):
 
 class VerifyEmail(views.APIView):
     serializer_class = EmailVerificationSerializer
-    token_param_config = openapi.Parameter(
-        'token', in_=openapi.IN_QUERY, description='Description', type=openapi.TYPE_STRING)
-
-    @swagger_auto_schema(manual_parameters=[token_param_config])
-    def get(self, request):
-        token = request.GET.get('token')
+    # otp_param_config = openapi.Parameter(
+    #     'otp', in_=openapi.IN_QUERY, description='Enter OTP', type=openapi.TYPE_STRING)
+    # @swagger_auto_schema(manual_parameters=[otp_param_config])
+    def post(self, request):
+        otp = request.data['otp']
+        email = request.data['email']
         try:
-            payload = jwt.decode(token, settings.SECRET_KEY)
-            user = User.objects.get(id=payload['user_id'])
-            if not user.is_verified:
-                user.is_verified = True
-                user.save()
-            return Response({'email': 'Successfully activated'}, status=status.HTTP_200_OK)
-        except jwt.ExpiredSignatureError as identifier:
-            return Response({'error': 'Activation Expired'}, status=status.HTTP_400_BAD_REQUEST)
-        except jwt.exceptions.DecodeError as identifier:
-            return Response({'error': 'Invalid token'}, status=status.HTTP_400_BAD_REQUEST)
+            user = User.objects.get(email = email)
+            if otp == user.otp:
+                if not user.is_verified:
+                    user.is_verified = True
+                    user.save()
+                return Response({'email': 'Successfully activated'}, status=status.HTTP_200_OK)
+            else:
+                return Response({'error': 'Invalid OTP'}, status=status.HTTP_400_BAD_REQUEST)
+        except:
+            return Response({'error': 'Invalid OTP or Email'}, status=status.HTTP_400_BAD_REQUEST)
 
 class LoginAPIView(generics.GenericAPIView):
     serializer_class = LoginSerializer
