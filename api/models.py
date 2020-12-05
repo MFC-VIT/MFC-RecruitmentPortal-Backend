@@ -46,6 +46,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     management_test_passed = models.BooleanField(default=False)
     editorial_test_passed = models.BooleanField(default=False)
     design_test_passed = models.BooleanField(default=False)
+    otp = models.IntegerField(blank=True,null=True)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
