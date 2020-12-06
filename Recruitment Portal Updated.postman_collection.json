@@ -1,0 +1,1606 @@
+{
+	"info": {
+		"_postman_id": "9039049b-cf42-4249-a315-7f4c0d69a0d3",
+		"name": "Recruitment Portal Updated",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"akshatguptawelcome@gmail.com\",\n    \"username\": \"Akshat123456\",\n    \"phone_number\": \"7983226698\",\n    \"password\": \"testpassword\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://mfcrecruitment.herokuapp.com/api/register/",
+					"protocol": "https",
+					"host": [
+						"mfcrecruitment",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"register",
+						""
+					]
+				},
+				"description": "Send Post Request \nwith these in body - \nemail\nusername\nphone_number\npassword"
+			},
+			"response": [
+				{
+					"name": "Register",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"akshatguptawelcome@gmail.com\",\n    \"username\": \"Akshat123456\",\n    \"phone_number\": \"7983226698\",\n    \"password\": \"testpassword\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://mfcrecruitment.herokuapp.com/api/register/",
+							"protocol": "https",
+							"host": [
+								"mfcrecruitment",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"register",
+								""
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Server",
+							"value": "gunicorn/20.0.4"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 06 Dec 2020 13:12:48 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "112"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"email\": \"akshatguptawelcome@gmail.com\",\n        \"username\": \"Akshat123456\",\n        \"phone_number\": \"+917983226698\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Email Verify",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"akshatguptawelcome@gmail.com\",\n    \"otp\": 484200\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://mfcrecruitment.herokuapp.com/api/email-verify/",
+					"protocol": "https",
+					"host": [
+						"mfcrecruitment",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"email-verify",
+						""
+					]
+				},
+				"description": "Send a post request with the following in body - \nemail\notp"
+			},
+			"response": [
+				{
+					"name": "Email Verify",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"akshatguptawelcome@gmail.com\",\n    \"otp\": 484200\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://mfcrecruitment.herokuapp.com/api/email-verify/",
+							"protocol": "https",
+							"host": [
+								"mfcrecruitment",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"email-verify",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Server",
+							"value": "gunicorn/20.0.4"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 06 Dec 2020 13:15:54 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Origin"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "34"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"email\": \"Successfully activated\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"akshatguptawelcome@gmail.com\",\n    \"password\": \"testpassword\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://mfcrecruitment.herokuapp.com/api/login/",
+					"protocol": "https",
+					"host": [
+						"mfcrecruitment",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"login",
+						""
+					]
+				},
+				"description": "Send Post request with following in the body - \nemail\npassword"
+			},
+			"response": [
+				{
+					"name": "Login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"akshatguptawelcome@gmail.com\",\n    \"password\": \"testpassword\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://mfcrecruitment.herokuapp.com/api/login/",
+							"protocol": "https",
+							"host": [
+								"mfcrecruitment",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"login",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Server",
+							"value": "gunicorn/20.0.4"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 06 Dec 2020 13:17:55 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Origin"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "514"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"email\": \"akshatguptawelcome@gmail.com\",\n    \"username\": \"Akshat123456\",\n    \"tokens\": {\n        \"refresh\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTYwNzM0NzA3NSwianRpIjoiZjA0ZTE1MDlmNzUxNDczZTk4YTgxMzZmNGFmOTRlOWEiLCJ1c2VyX2lkIjo3fQ.O2uYwlcR62WoIdKfBRSWWKLvB4mnT_P6cHfIRoUafVY\",\n        \"access\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjA3MzQ3MDc1LCJqdGkiOiIxM2YzYTZmMWYyNjA0ZDIwYjlhYmIzMTk3ZmY2ZDViZCIsInVzZXJfaWQiOjd9.o21tEuApShWkg2PpNC4OVKUJnfuRFavz7Iezi6-isy8\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Get user test status",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjA3MzQ3MDc1LCJqdGkiOiIxM2YzYTZmMWYyNjA0ZDIwYjlhYmIzMTk3ZmY2ZDViZCIsInVzZXJfaWQiOjd9.o21tEuApShWkg2PpNC4OVKUJnfuRFavz7Iezi6-isy8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://mfcrecruitment.herokuapp.com/api/user_test/",
+					"protocol": "https",
+					"host": [
+						"mfcrecruitment",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"user_test",
+						""
+					]
+				},
+				"description": "To check which tests have been attempted by the user"
+			},
+			"response": [
+				{
+					"name": "Get user test status",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://mfcrecruitment.herokuapp.com/api/user_test/",
+							"protocol": "https",
+							"host": [
+								"mfcrecruitment",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"user_test",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Server",
+							"value": "gunicorn/20.0.4"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 06 Dec 2020 13:19:44 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Origin"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "71"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"technical\": false,\n    \"management\": false,\n    \"editorial\": false,\n    \"design\": false\n}"
+				}
+			]
+		},
+		{
+			"name": "Get technical Questions",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjA3MzQ3MDc1LCJqdGkiOiIxM2YzYTZmMWYyNjA0ZDIwYjlhYmIzMTk3ZmY2ZDViZCIsInVzZXJfaWQiOjd9.o21tEuApShWkg2PpNC4OVKUJnfuRFavz7Iezi6-isy8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://mfcrecruitment.herokuapp.com/api/technicalquestions/",
+					"protocol": "https",
+					"host": [
+						"mfcrecruitment",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"technicalquestions",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get technical Questions",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://mfcrecruitment.herokuapp.com/api/technicalquestions/",
+							"protocol": "https",
+							"host": [
+								"mfcrecruitment",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"technicalquestions",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Server",
+							"value": "gunicorn/20.0.4"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 06 Dec 2020 13:21:40 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Origin"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "2606"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"mcq\": [\n        {\n            \"question_id\": \"tech_mcq_8\",\n            \"question\": \"https://cdn.pixabay.com/photo/2020/07/27/14/34/stars-5442598__340.jpg\",\n            \"option_1\": \"company\",\n            \"option_2\": \"fruit\",\n            \"option_3\": \"option 1&2\",\n            \"option_4\": \"all of these\"\n        },\n        {\n            \"question_id\": \"tech_mcq_7\",\n            \"question\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfrLAZZRhW85ny1UWBbuyo4_ATKJgx7dHK6Q&usqp=CAU\",\n            \"option_1\": \"what\",\n            \"option_2\": \"that\",\n            \"option_3\": \"this\",\n            \"option_4\": \"those\"\n        },\n        {\n            \"question_id\": \"tech_mcq_14\",\n            \"question\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgwh88F-u5N0LmG3maIAiAJqGHnv3RuhXQaA&usqp=CAU\",\n            \"option_1\": \"fruit\",\n            \"option_2\": \"B\",\n            \"option_3\": \"Java\",\n            \"option_4\": \"Python\"\n        },\n        {\n            \"question_id\": \"tech_mcq_9\",\n            \"question\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzr0R9ziCVWDGq7tD8jO-FhKrY_KxfqpxW1g&usqp=CAU\",\n            \"option_1\": \"snake\",\n            \"option_2\": \"program\",\n            \"option_3\": \"language\",\n            \"option_4\": \"game\"\n        },\n        {\n            \"question_id\": \"tech_mcq_5\",\n            \"question\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSm1kvTKRN5_Xg82WHwBGCQdOMmdm5LqxRNA&usqp=CAU\",\n            \"option_1\": \"this\",\n            \"option_2\": \"that\",\n            \"option_3\": \"those\",\n            \"option_4\": \"these\"\n        },\n        {\n            \"question_id\": \"tech_mcq_13\",\n            \"question\": \"https://i.pinimg.com/originals/a4/96/c2/a496c2b6bc5d7cfe0e0674f6598c38ad.jpg\",\n            \"option_1\": \"Django\",\n            \"option_2\": \"React\",\n            \"option_3\": \"Vue\",\n            \"option_4\": \"All of the above\"\n        },\n        {\n            \"question_id\": \"tech_mcq_2\",\n            \"question\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfFpwOM61SA7qfo00m7MhXCK8Gd6rEmI5BTg&usqp=CAU\",\n            \"option_1\": \"fruit\",\n            \"option_2\": \"vegetable\",\n            \"option_3\": \"company\",\n            \"option_4\": \"none of these\"\n        },\n        {\n            \"question_id\": \"tech_mcq_10\",\n            \"question\": \"https://media.gettyimages.com/photos/wide-panoramic-view-of-mumbai-financial-capital-of-india-picture-id947740086?s=612x612\",\n            \"option_1\": \"language\",\n            \"option_2\": \"program\",\n            \"option_3\": \"those\",\n            \"option_4\": \"none\"\n        },\n        {\n            \"question_id\": \"tech_mcq_6\",\n            \"question\": \"https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/close-up-of-christmas-rose-single-white-flower-royalty-free-image-1578194497.jpg\",\n            \"option_1\": \"that\",\n            \"option_2\": \"it\",\n            \"option_3\": \"is\",\n            \"option_4\": \"those\"\n        },\n        {\n            \"question_id\": \"tech_mcq_1\",\n            \"question\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmtgZj9_cEZGVIH0ImzXCK9daF3BcbllYp_Q&usqp=CAU\",\n            \"option_1\": \"fruit\",\n            \"option_2\": \"vegetable\",\n            \"option_3\": \"company\",\n            \"option_4\": \"none of these\"\n        }\n    ],\n    \"write\": [\n        {\n            \"question_id\": \"tech_type_4\",\n            \"question\": \"https://image.shutterstock.com/image-photo/bright-spring-view-cameo-island-260nw-1048185397.jpg\"\n        },\n        {\n            \"question_id\": \"tech_type_3\",\n            \"question\": \"https://media.istockphoto.com/photos/child-hands-formig-heart-shape-picture-id951945718?k=6&m=951945718&s=612x612&w=0&h=ih-N7RytxrTfhDyvyTQCA5q5xKoJToKSYgdsJ_mHrv0=\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Get management Questions",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjA3MzQ3MDc1LCJqdGkiOiIxM2YzYTZmMWYyNjA0ZDIwYjlhYmIzMTk3ZmY2ZDViZCIsInVzZXJfaWQiOjd9.o21tEuApShWkg2PpNC4OVKUJnfuRFavz7Iezi6-isy8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://mfcrecruitment.herokuapp.com/api/managementquestions/",
+					"protocol": "https",
+					"host": [
+						"mfcrecruitment",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"managementquestions",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get management Questions",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://mfcrecruitment.herokuapp.com/api/managementquestions/",
+							"protocol": "https",
+							"host": [
+								"mfcrecruitment",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"managementquestions",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Server",
+							"value": "gunicorn/20.0.4"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 06 Dec 2020 13:27:41 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Origin"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "865"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"write\": [\n        {\n            \"question_id\": \"mang_type_1\",\n            \"question\": \"https://images.all-free-download.com/images/graphicthumb/hd_picture_of_the_beautiful_natural_scenery_03_166249.jpg\"\n        },\n        {\n            \"question_id\": \"mang_type_6\",\n            \"question\": \"https://image.shutterstock.com/image-photo/ancient-temple-ruins-gadi-sagar-260nw-786126286.jpg\"\n        },\n        {\n            \"question_id\": \"mang_type_7\",\n            \"question\": \"https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/close-up-of-tulips-blooming-in-field-royalty-free-image-1584131616.jpg?crop=0.630xw:1.00xh;0.186xw,0&resize=640:*\"\n        },\n        {\n            \"question_id\": \"mang_type_2\",\n            \"question\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfaJuXd05exiz7RMDHohhFRh7BySnxLAiGXA&usqp=CAU\"\n        },\n        {\n            \"question_id\": \"mang_type_5\",\n            \"question\": \"https://helpx.adobe.com/content/dam/help/en/stock/how-to/visual-reverse-image-search/jcr_content/main-pars/image/visual-reverse-image-search-v2_intro.jpg\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Get editorial Questions",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjA3MzQ3MDc1LCJqdGkiOiIxM2YzYTZmMWYyNjA0ZDIwYjlhYmIzMTk3ZmY2ZDViZCIsInVzZXJfaWQiOjd9.o21tEuApShWkg2PpNC4OVKUJnfuRFavz7Iezi6-isy8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://mfcrecruitment.herokuapp.com/api/editorialquestions/",
+					"protocol": "https",
+					"host": [
+						"mfcrecruitment",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"editorialquestions",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get editorial Questions",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://mfcrecruitment.herokuapp.com/api/editorialquestions/",
+							"protocol": "https",
+							"host": [
+								"mfcrecruitment",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"editorialquestions",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Server",
+							"value": "gunicorn/20.0.4"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 06 Dec 2020 13:28:34 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Origin"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "355"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"write\": [\n        {\n            \"question_id\": \"ed_type_3\",\n            \"question\": \"https://img.freepik.com/free-photo/wall-wallpaper-concrete-colored-painted-textured-concept_53876-31799.jpg?size=626&ext=jpg\"\n        },\n        {\n            \"question_id\": \"ed_type_4\",\n            \"question\": \"https://thumbs.dreamstime.com/b/happy-birthday-written-sand-sunset-beach-hawaii-palm-trees-ocean-background-happy-birthday-167863724.jpg\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Get design Questions",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjA3MzQ3MDc1LCJqdGkiOiIxM2YzYTZmMWYyNjA0ZDIwYjlhYmIzMTk3ZmY2ZDViZCIsInVzZXJfaWQiOjd9.o21tEuApShWkg2PpNC4OVKUJnfuRFavz7Iezi6-isy8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://mfcrecruitment.herokuapp.com/api/designquestions/",
+					"protocol": "https",
+					"host": [
+						"mfcrecruitment",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"designquestions",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get design Questions",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://mfcrecruitment.herokuapp.com/api/designquestions/",
+							"protocol": "https",
+							"host": [
+								"mfcrecruitment",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"designquestions",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Server",
+							"value": "gunicorn/20.0.4"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 06 Dec 2020 13:29:35 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Origin"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "437"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"write\": [\n        {\n            \"question_id\": \"desg_type_1\",\n            \"question\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiT9E-DFBokH8-idRbxYheI-3Bjutkry8_Uw&usqp=CAU\"\n        },\n        {\n            \"question_id\": \"desg_type_2\",\n            \"question\": \"https://theinpaint.com/images/example-1-1.jpg\"\n        },\n        {\n            \"question_id\": \"desg_type_3\",\n            \"question\": \"https://images.ctfassets.net/hrltx12pl8hq/6bi6wKIM5DDM5U1PtGVFcP/1c7fce6de33bb6575548a646ff9b03aa/nature-photography-pictures.jpg?fit=fill&w=800&h=300\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Send technical responses",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjA3MzQ3MDc1LCJqdGkiOiIxM2YzYTZmMWYyNjA0ZDIwYjlhYmIzMTk3ZmY2ZDViZCIsInVzZXJfaWQiOjd9.o21tEuApShWkg2PpNC4OVKUJnfuRFavz7Iezi6-isy8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"domain\":1,\n        \"question\": \"https://cdn.pixabay.com/photo/2020/07/27/14/34/stars-5442598__340.jpg\",\n        \"answer\": \"hyper text markup language\"\n    },\n    {\n        \"domain\":1,\n        \"question\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfrLAZZRhW85ny1UWBbuyo4_ATKJgx7dHK6Q&usqp=CAU\",\n        \"answer\": \"hyper text markup language\"\n    },\n    {\n        \"domain\":1,\n        \"question\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgwh88F-u5N0LmG3maIAiAJqGHnv3RuhXQaA&usqp=CAU\",\n        \"answer\": \"hyper text markup language\"\n    },\n    {\n        \"domain\":1,\n        \"question\": \"https://cdn.pixabay.com/photo/2020/07/27/14/34/stars-5442598__340.jpg\",\n        \"answer\": \"hyper text markup language\"\n    },\n    {\n        \"domain\":1,\n        \"question\": \"https://cdn.pixabay.com/photo/2020/07/27/14/34/stars-5442598__340.jpg\",\n        \"answer\": \"hyper text markup language\"\n    },\n    {\n        \"domain\":1,\n        \"question\": \"https://cdn.pixabay.com/photo/2020/07/27/14/34/stars-5442598__340.jpg\",\n        \"answer\": \"hyper text markup language\"\n    },\n    {\n        \"domain\":1,\n        \"question\": \"https://cdn.pixabay.com/photo/2020/07/27/14/34/stars-5442598__340.jpg\",\n        \"answer\": \"hyper text markup language\"\n    },\n    {\n        \"domain\":1,\n        \"question\": \"https://cdn.pixabay.com/photo/2020/07/27/14/34/stars-5442598__340.jpg\",\n        \"answer\": \"hyper text markup language\"\n    },\n    {\n        \"domain\":1,\n        \"question\": \"https://cdn.pixabay.com/photo/2020/07/27/14/34/stars-5442598__340.jpg\",\n        \"answer\": \"hyper text markup language\"\n    },\n    {\n        \"domain\":1,\n        \"question\": \"https://cdn.pixabay.com/photo/2020/07/27/14/34/stars-5442598__340.jpg\",\n        \"answer\": \"hyper text markup language\"\n    },\n    {\n        \"domain\":1,\n        \"question\": \"https://cdn.pixabay.com/photo/2020/07/27/14/34/stars-5442598__340.jpg\",\n        \"answer\": \"hyper text markup language\"\n    },\n    {\n        \"domain\":1,\n        \"question\": \"https://cdn.pixabay.com/photo/2020/07/27/14/34/stars-5442598__340.jpg\",\n        \"answer\": \"hyper text markup language\"\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://mfcrecruitment.herokuapp.com/api/send_tech_responses/",
+					"protocol": "https",
+					"host": [
+						"mfcrecruitment",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"send_tech_responses",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Send technical responses",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"domain\":1,\n        \"question\": \"https://cdn.pixabay.com/photo/2020/07/27/14/34/stars-5442598__340.jpg\",\n        \"answer\": \"hyper text markup language\"\n    },\n    {\n        \"domain\":1,\n        \"question\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfrLAZZRhW85ny1UWBbuyo4_ATKJgx7dHK6Q&usqp=CAU\",\n        \"answer\": \"hyper text markup language\"\n    },\n    {\n        \"domain\":1,\n        \"question\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgwh88F-u5N0LmG3maIAiAJqGHnv3RuhXQaA&usqp=CAU\",\n        \"answer\": \"hyper text markup language\"\n    },\n    {\n        \"domain\":1,\n        \"question\": \"https://cdn.pixabay.com/photo/2020/07/27/14/34/stars-5442598__340.jpg\",\n        \"answer\": \"hyper text markup language\"\n    },\n    {\n        \"domain\":1,\n        \"question\": \"https://cdn.pixabay.com/photo/2020/07/27/14/34/stars-5442598__340.jpg\",\n        \"answer\": \"hyper text markup language\"\n    },\n    {\n        \"domain\":1,\n        \"question\": \"https://cdn.pixabay.com/photo/2020/07/27/14/34/stars-5442598__340.jpg\",\n        \"answer\": \"hyper text markup language\"\n    },\n    {\n        \"domain\":1,\n        \"question\": \"https://cdn.pixabay.com/photo/2020/07/27/14/34/stars-5442598__340.jpg\",\n        \"answer\": \"hyper text markup language\"\n    },\n    {\n        \"domain\":1,\n        \"question\": \"https://cdn.pixabay.com/photo/2020/07/27/14/34/stars-5442598__340.jpg\",\n        \"answer\": \"hyper text markup language\"\n    },\n    {\n        \"domain\":1,\n        \"question\": \"https://cdn.pixabay.com/photo/2020/07/27/14/34/stars-5442598__340.jpg\",\n        \"answer\": \"hyper text markup language\"\n    },\n    {\n        \"domain\":1,\n        \"question\": \"https://cdn.pixabay.com/photo/2020/07/27/14/34/stars-5442598__340.jpg\",\n        \"answer\": \"hyper text markup language\"\n    },\n    {\n        \"domain\":1,\n        \"question\": \"https://cdn.pixabay.com/photo/2020/07/27/14/34/stars-5442598__340.jpg\",\n        \"answer\": \"hyper text markup language\"\n    },\n    {\n        \"domain\":1,\n        \"question\": \"https://cdn.pixabay.com/photo/2020/07/27/14/34/stars-5442598__340.jpg\",\n        \"answer\": \"hyper text markup language\"\n    }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://mfcrecruitment.herokuapp.com/api/send_tech_responses/",
+							"protocol": "https",
+							"host": [
+								"mfcrecruitment",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"send_tech_responses",
+								""
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Server",
+							"value": "gunicorn/20.0.4"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 06 Dec 2020 13:26:42 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Origin"
+						},
+						{
+							"key": "Allow",
+							"value": "OPTIONS, POST"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1669"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"domain\": 1,\n        \"question\": \"https://cdn.pixabay.com/photo/2020/07/27/14/34/stars-5442598__340.jpg\",\n        \"answer\": \"hyper text markup language\"\n    },\n    {\n        \"domain\": 1,\n        \"question\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfrLAZZRhW85ny1UWBbuyo4_ATKJgx7dHK6Q&usqp=CAU\",\n        \"answer\": \"hyper text markup language\"\n    },\n    {\n        \"domain\": 1,\n        \"question\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgwh88F-u5N0LmG3maIAiAJqGHnv3RuhXQaA&usqp=CAU\",\n        \"answer\": \"hyper text markup language\"\n    },\n    {\n        \"domain\": 1,\n        \"question\": \"https://cdn.pixabay.com/photo/2020/07/27/14/34/stars-5442598__340.jpg\",\n        \"answer\": \"hyper text markup language\"\n    },\n    {\n        \"domain\": 1,\n        \"question\": \"https://cdn.pixabay.com/photo/2020/07/27/14/34/stars-5442598__340.jpg\",\n        \"answer\": \"hyper text markup language\"\n    },\n    {\n        \"domain\": 1,\n        \"question\": \"https://cdn.pixabay.com/photo/2020/07/27/14/34/stars-5442598__340.jpg\",\n        \"answer\": \"hyper text markup language\"\n    },\n    {\n        \"domain\": 1,\n        \"question\": \"https://cdn.pixabay.com/photo/2020/07/27/14/34/stars-5442598__340.jpg\",\n        \"answer\": \"hyper text markup language\"\n    },\n    {\n        \"domain\": 1,\n        \"question\": \"https://cdn.pixabay.com/photo/2020/07/27/14/34/stars-5442598__340.jpg\",\n        \"answer\": \"hyper text markup language\"\n    },\n    {\n        \"domain\": 1,\n        \"question\": \"https://cdn.pixabay.com/photo/2020/07/27/14/34/stars-5442598__340.jpg\",\n        \"answer\": \"hyper text markup language\"\n    },\n    {\n        \"domain\": 1,\n        \"question\": \"https://cdn.pixabay.com/photo/2020/07/27/14/34/stars-5442598__340.jpg\",\n        \"answer\": \"hyper text markup language\"\n    },\n    {\n        \"domain\": 1,\n        \"question\": \"https://cdn.pixabay.com/photo/2020/07/27/14/34/stars-5442598__340.jpg\",\n        \"answer\": \"hyper text markup language\"\n    },\n    {\n        \"domain\": 1,\n        \"question\": \"https://cdn.pixabay.com/photo/2020/07/27/14/34/stars-5442598__340.jpg\",\n        \"answer\": \"hyper text markup language\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Send management responses",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjA3MzQ3MDc1LCJqdGkiOiIxM2YzYTZmMWYyNjA0ZDIwYjlhYmIzMTk3ZmY2ZDViZCIsInVzZXJfaWQiOjd9.o21tEuApShWkg2PpNC4OVKUJnfuRFavz7Iezi6-isy8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"domain\":2,\n        \"question\": \"https://cdn.pixabay.com/photo/2020/07/27/14/34/stars-5442598__340.jpg\",\n        \"answer\": \"managment answer\"\n    },\n    {\n        \"domain\":2,\n        \"question\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfrLAZZRhW85ny1UWBbuyo4_ATKJgx7dHK6Q&usqp=CAU\",\n        \"answer\": \"management answer\"\n    },\n    {\n        \"domain\":2,\n        \"question\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgwh88F-u5N0LmG3maIAiAJqGHnv3RuhXQaA&usqp=CAU\",\n        \"answer\": \"management answer\"\n    },\n    {\n        \"domain\":2,\n        \"question\": \"https://cdn.pixabay.com/photo/2020/07/27/14/34/stars-5442598__340.jpg\",\n        \"answer\": \"management answer\"\n    },\n    {\n        \"domain\":2,\n        \"question\": \"https://cdn.pixabay.com/photo/2020/07/27/14/34/stars-5442598__340.jpg\",\n        \"answer\": \"management answer\"\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://mfcrecruitment.herokuapp.com/api/send_mang_responses/",
+					"protocol": "https",
+					"host": [
+						"mfcrecruitment",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"send_mang_responses",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Send management responses",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"domain\":2,\n        \"question\": \"https://cdn.pixabay.com/photo/2020/07/27/14/34/stars-5442598__340.jpg\",\n        \"answer\": \"managment answer\"\n    },\n    {\n        \"domain\":2,\n        \"question\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfrLAZZRhW85ny1UWBbuyo4_ATKJgx7dHK6Q&usqp=CAU\",\n        \"answer\": \"management answer\"\n    },\n    {\n        \"domain\":2,\n        \"question\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgwh88F-u5N0LmG3maIAiAJqGHnv3RuhXQaA&usqp=CAU\",\n        \"answer\": \"management answer\"\n    },\n    {\n        \"domain\":2,\n        \"question\": \"https://cdn.pixabay.com/photo/2020/07/27/14/34/stars-5442598__340.jpg\",\n        \"answer\": \"management answer\"\n    },\n    {\n        \"domain\":2,\n        \"question\": \"https://cdn.pixabay.com/photo/2020/07/27/14/34/stars-5442598__340.jpg\",\n        \"answer\": \"management answer\"\n    }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://mfcrecruitment.herokuapp.com/api/send_mang_responses/",
+							"protocol": "https",
+							"host": [
+								"mfcrecruitment",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"send_mang_responses",
+								""
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Server",
+							"value": "gunicorn/20.0.4"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 06 Dec 2020 13:39:09 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Origin"
+						},
+						{
+							"key": "Allow",
+							"value": "OPTIONS, POST"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "685"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"domain\": 2,\n        \"question\": \"https://cdn.pixabay.com/photo/2020/07/27/14/34/stars-5442598__340.jpg\",\n        \"answer\": \"managment answer\"\n    },\n    {\n        \"domain\": 2,\n        \"question\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfrLAZZRhW85ny1UWBbuyo4_ATKJgx7dHK6Q&usqp=CAU\",\n        \"answer\": \"management answer\"\n    },\n    {\n        \"domain\": 2,\n        \"question\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgwh88F-u5N0LmG3maIAiAJqGHnv3RuhXQaA&usqp=CAU\",\n        \"answer\": \"management answer\"\n    },\n    {\n        \"domain\": 2,\n        \"question\": \"https://cdn.pixabay.com/photo/2020/07/27/14/34/stars-5442598__340.jpg\",\n        \"answer\": \"management answer\"\n    },\n    {\n        \"domain\": 2,\n        \"question\": \"https://cdn.pixabay.com/photo/2020/07/27/14/34/stars-5442598__340.jpg\",\n        \"answer\": \"management answer\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Send editorial responses",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjA3MzQ3MDc1LCJqdGkiOiIxM2YzYTZmMWYyNjA0ZDIwYjlhYmIzMTk3ZmY2ZDViZCIsInVzZXJfaWQiOjd9.o21tEuApShWkg2PpNC4OVKUJnfuRFavz7Iezi6-isy8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"domain\":3,\n        \"question\": \"https://cdn.pixabay.com/photo/2020/07/27/14/34/stars-5442598__340.jpg\",\n        \"answer\": \"editorial answer\"\n    },\n    {\n        \"domain\":3,\n        \"question\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfrLAZZRhW85ny1UWBbuyo4_ATKJgx7dHK6Q&usqp=CAU\",\n        \"answer\": \"editorial answer\"\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://mfcrecruitment.herokuapp.com/api/send_edit_responses/",
+					"protocol": "https",
+					"host": [
+						"mfcrecruitment",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"send_edit_responses",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Send editorial responses",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"domain\":3,\n        \"question\": \"https://cdn.pixabay.com/photo/2020/07/27/14/34/stars-5442598__340.jpg\",\n        \"answer\": \"editorial answer\"\n    },\n    {\n        \"domain\":3,\n        \"question\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfrLAZZRhW85ny1UWBbuyo4_ATKJgx7dHK6Q&usqp=CAU\",\n        \"answer\": \"editorial answer\"\n    }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://mfcrecruitment.herokuapp.com/api/send_edit_responses/",
+							"protocol": "https",
+							"host": [
+								"mfcrecruitment",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"send_edit_responses",
+								""
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Server",
+							"value": "gunicorn/20.0.4"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 06 Dec 2020 13:40:54 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Origin"
+						},
+						{
+							"key": "Allow",
+							"value": "OPTIONS, POST"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "279"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"domain\": 3,\n        \"question\": \"https://cdn.pixabay.com/photo/2020/07/27/14/34/stars-5442598__340.jpg\",\n        \"answer\": \"editorial answer\"\n    },\n    {\n        \"domain\": 3,\n        \"question\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfrLAZZRhW85ny1UWBbuyo4_ATKJgx7dHK6Q&usqp=CAU\",\n        \"answer\": \"editorial answer\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Send design responses",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjA3MzQ3MDc1LCJqdGkiOiIxM2YzYTZmMWYyNjA0ZDIwYjlhYmIzMTk3ZmY2ZDViZCIsInVzZXJfaWQiOjd9.o21tEuApShWkg2PpNC4OVKUJnfuRFavz7Iezi6-isy8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"domain\":4,\n        \"question\": \"https://cdn.pixabay.com/photo/2020/07/27/14/34/stars-5442598__340.jpg\",\n        \"answer\": \"design answer\"\n    },\n    {\n        \"domain\":4,\n        \"question\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfrLAZZRhW85ny1UWBbuyo4_ATKJgx7dHK6Q&usqp=CAU\",\n        \"answer\": \"design answer\"\n    },\n    {\n        \"domain\":4,\n        \"question\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfrLAZZRhW85ny1UWBbuyo4_ATKJgx7dHK6Q&usqp=CAU\",\n        \"answer\": \"design answer\"\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://mfcrecruitment.herokuapp.com/api/send_desg_responses/",
+					"protocol": "https",
+					"host": [
+						"mfcrecruitment",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"send_desg_responses",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Send design responses",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"domain\":4,\n        \"question\": \"https://cdn.pixabay.com/photo/2020/07/27/14/34/stars-5442598__340.jpg\",\n        \"answer\": \"design answer\"\n    },\n    {\n        \"domain\":4,\n        \"question\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfrLAZZRhW85ny1UWBbuyo4_ATKJgx7dHK6Q&usqp=CAU\",\n        \"answer\": \"design answer\"\n    },\n    {\n        \"domain\":4,\n        \"question\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfrLAZZRhW85ny1UWBbuyo4_ATKJgx7dHK6Q&usqp=CAU\",\n        \"answer\": \"design answer\"\n    }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://mfcrecruitment.herokuapp.com/api/send_desg_responses/",
+							"protocol": "https",
+							"host": [
+								"mfcrecruitment",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"send_desg_responses",
+								""
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Server",
+							"value": "gunicorn/20.0.4"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 06 Dec 2020 13:42:34 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Origin"
+						},
+						{
+							"key": "Allow",
+							"value": "OPTIONS, POST"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "424"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"domain\": 4,\n        \"question\": \"https://cdn.pixabay.com/photo/2020/07/27/14/34/stars-5442598__340.jpg\",\n        \"answer\": \"design answer\"\n    },\n    {\n        \"domain\": 4,\n        \"question\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfrLAZZRhW85ny1UWBbuyo4_ATKJgx7dHK6Q&usqp=CAU\",\n        \"answer\": \"design answer\"\n    },\n    {\n        \"domain\": 4,\n        \"question\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfrLAZZRhW85ny1UWBbuyo4_ATKJgx7dHK6Q&usqp=CAU\",\n        \"answer\": \"design answer\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Refresh Token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"refresh\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTYwNzM0NzA3NSwianRpIjoiZjA0ZTE1MDlmNzUxNDczZTk4YTgxMzZmNGFmOTRlOWEiLCJ1c2VyX2lkIjo3fQ.O2uYwlcR62WoIdKfBRSWWKLvB4mnT_P6cHfIRoUafVY\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://mfcrecruitment.herokuapp.com/api/api/token/refresh/",
+					"protocol": "https",
+					"host": [
+						"mfcrecruitment",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"api",
+						"token",
+						"refresh",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Refresh Token",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"refresh\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTYwNzM0NzA3NSwianRpIjoiZjA0ZTE1MDlmNzUxNDczZTk4YTgxMzZmNGFmOTRlOWEiLCJ1c2VyX2lkIjo3fQ.O2uYwlcR62WoIdKfBRSWWKLvB4mnT_P6cHfIRoUafVY\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://mfcrecruitment.herokuapp.com/api/api/token/refresh/",
+							"protocol": "https",
+							"host": [
+								"mfcrecruitment",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"api",
+								"token",
+								"refresh",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Server",
+							"value": "gunicorn/20.0.4"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 06 Dec 2020 13:45:19 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Origin"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "218"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"access\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjA3MzQ4NzE5LCJqdGkiOiIzNTM0ZDY4ZTY0NDc0Zjg0ODMxMzg4YTI5ZDIxMjlkYSIsInVzZXJfaWQiOjd9.q6rFBIgdOi6GtkfPEA5lTUHXL-Mxc6jiprYGPUcZVoQ\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Logout",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjA3MzQ4NzE5LCJqdGkiOiIzNTM0ZDY4ZTY0NDc0Zjg0ODMxMzg4YTI5ZDIxMjlkYSIsInVzZXJfaWQiOjd9.q6rFBIgdOi6GtkfPEA5lTUHXL-Mxc6jiprYGPUcZVoQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"refresh\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTYwNzM0NzA3NSwianRpIjoiZjA0ZTE1MDlmNzUxNDczZTk4YTgxMzZmNGFmOTRlOWEiLCJ1c2VyX2lkIjo3fQ.O2uYwlcR62WoIdKfBRSWWKLvB4mnT_P6cHfIRoUafVY\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://mfcrecruitment.herokuapp.com/api/logout/",
+					"protocol": "https",
+					"host": [
+						"mfcrecruitment",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"logout",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Logout",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"refresh\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTYwNzM0NzA3NSwianRpIjoiZjA0ZTE1MDlmNzUxNDczZTk4YTgxMzZmNGFmOTRlOWEiLCJ1c2VyX2lkIjo3fQ.O2uYwlcR62WoIdKfBRSWWKLvB4mnT_P6cHfIRoUafVY\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://mfcrecruitment.herokuapp.com/api/logout/",
+							"protocol": "https",
+							"host": [
+								"mfcrecruitment",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"logout",
+								""
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Server",
+							"value": "gunicorn/20.0.4"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 06 Dec 2020 13:47:28 GMT"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Origin"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "0"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		}
+	],
+	"protocolProfileBehavior": {}
+}
