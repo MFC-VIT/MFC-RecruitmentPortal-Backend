@@ -8,13 +8,13 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 class UserManager(BaseUserManager):
 
-    def create_user(self, username, email, phone_number, password=None):
+    def create_user(self, username, email, phone_number,reg_no, password=None):
         if username is None:
             raise TypeError('Users should have a username')
         if email is None:
             raise TypeError('Users should have a Email')
 
-        user = self.model(username=username, email=self.normalize_email(email), phone_number=phone_number)
+        user = self.model(username=username, email=self.normalize_email(email), phone_number=phone_number, reg_no = reg_no)
         user.set_password(password)
         user.save()
         return user
@@ -24,7 +24,8 @@ class UserManager(BaseUserManager):
             raise TypeError('Password should not be none')
 
         phone_number = '1234567890'
-        user = self.create_user(username, email, phone_number, password)
+        reg_no = '19BIT0000'
+        user = self.create_user(username, email, phone_number, reg_no, password)
         user.is_superuser = True
         user.is_staff = True
         user.save()
@@ -35,6 +36,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=255, unique=True, db_index=True)
     email = models.EmailField(max_length=255, unique=True, db_index=True)
     phone_number = PhoneNumberField()
+    reg_no = models.CharField(max_length=10,default='19BIT0000')
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     is_verified = models.BooleanField(default=False)
