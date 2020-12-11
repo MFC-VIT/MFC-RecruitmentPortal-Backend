@@ -3,8 +3,13 @@ from django.contrib.auth.models import (AbstractBaseUser, BaseUserManager, Permi
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.core.validators import MaxValueValidator, MinValueValidator
 from phonenumber_field.modelfields import PhoneNumberField
+from django.contrib.auth.validators import UnicodeUsernameValidator
+from django.utils.translation import ugettext_lazy as _
 
 # Create your models here.
+
+class MyValidator(UnicodeUsernameValidator):
+    regex = r'^[\w.@+\- ]+$'
 
 class UserManager(BaseUserManager):
 
@@ -33,7 +38,8 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser, PermissionsMixin):
-    username = models.CharField(max_length=255, unique=True, db_index=True)
+    username_validator = MyValidator()
+    username = models.CharField(max_length=150,validators=[username_validator])
     email = models.EmailField(max_length=255, unique=True, db_index=True)
     phone_number = PhoneNumberField()
     reg_no = models.CharField(max_length=10,default='19BIT0000')
@@ -99,3 +105,20 @@ class Responses(models.Model):
 
     def __str__(self):
         return self.question
+
+
+
+# from django.contrib.auth.models import AbstractUser
+
+# class MyUser(AbstractUser):
+#     username_validator = MyValidator()
+#     username = models.CharField(
+#         _('username'),
+#         max_length=150,
+#         unique=True,
+#         help_text=_('Required. 150 characters or fewer. Letters, digits and @/./ /-/_ only.'),
+#         validators=[username_validator],
+#             error_messages={
+#             'unique': _("A user with that username already exists."),
+#         },
+#     )
