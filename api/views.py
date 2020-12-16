@@ -71,9 +71,9 @@ class VerifyEmail(views.APIView):
                 if not user.is_verified:
                     user.is_verified = True
                     user.save()
-                    email_body = '<h1> Hello ' + user.username + ', Greetings from MFCVIT </h1>,' + 'Your account has been successfully activated \n' + 'You will be notified for the recruitment test soon.'
+                    email_body = '<h1> Hello ' + user.username + ', Greetings from MFCVIT, </h1>' + 'Your account has been successfully activated \n' + 'You will be notified for the recruitment test soon.'
                     data = {'email_body': email_body, 'to_email': user.email,
-                            'email_subject': 'Account activation successfull'}
+                            'email_subject': 'Account activation successful'}
                     Util.send_email(data)
                 return Response({'email': 'Successfully activated'}, status=status.HTTP_200_OK)
             else:
