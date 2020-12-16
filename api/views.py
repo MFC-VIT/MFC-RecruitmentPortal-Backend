@@ -227,10 +227,22 @@ def sendeditorialquestions(request):
             return Response(error)
         ed_domain = Domain.objects.get(domain_name='Editorial')
         type = typeQuestions.objects.filter(domain=ed_domain)
-        finaltype = random.sample(list(type), 2)
-        typeserializer = typeSerializer(finaltype, many=True)
+        shortquestions = []
+        longquestions = []
+        for question in type:
+            if 'ed_long' in question.question_id:
+                longquestions.append(question)
+            else:
+                shortquestions.append(question)
+        random_short = random.sample(list(shortquestions), 3)
+        random_long = random.sample(list(longquestions), 3)
+        typeshortserializer = typeSerializer(random_short, many=True)
+        typelongserializer = typeSerializer(random_long, many=True)
         finalquestions = {
-            'write':typeserializer.data
+            'write': {
+                'long': typelongserializer.data,
+                'short': typeshortserializer.data
+            }
         }
         return Response(finalquestions)
 
