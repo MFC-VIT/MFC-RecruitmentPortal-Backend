@@ -222,7 +222,7 @@ def sendeditorialquestions(request):
     if request.method == 'GET':
         if request.user.editorial_test:
             error = {
-                'error': 'User already attempted Management Test'
+                'error': 'User already attempted Editorial Test'
             }
             return Response(error)
         ed_domain = Domain.objects.get(domain_name='Editorial')
@@ -252,7 +252,7 @@ def senddesignquestions(request):
     if request.method == 'GET':
         if request.user.design_test:
             error = {
-                'error': 'User already attempted Management Test'
+                'error': 'User already attempted Design Test'
             }
             return Response(error)
         design_domain = Domain.objects.get(domain_name='Design')
@@ -295,7 +295,7 @@ def SendManagementResponsesAPIView(request):
         if serializer.is_valid():
             serializer.save(user=request.user)
             user = request.user
-            user.technical_test = True
+            user.management_test = True
             user.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -307,7 +307,7 @@ def SendEditorialResponsesAPIView(request):
         serializer = responseSerializer(data=request.data,many=True)
         if request.user.editorial_test:
             error = {
-                'error': 'User already attempted Management Test'
+                'error': 'User already attempted Editorial Test'
             }
             return Response(error)
         if serializer.is_valid():
@@ -325,7 +325,7 @@ def SendDesignResponsesAPIView(request):
         serializer = responseSerializer(data=request.data,many=True)
         if request.user.design_test:
             error = {
-                'error': 'User already attempted Management Test'
+                'error': 'User already attempted Design Test'
             }
             return Response(error)
         if serializer.is_valid():
