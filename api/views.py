@@ -71,7 +71,7 @@ class VerifyEmail(views.APIView):
                 if not user.is_verified:
                     user.is_verified = True
                     user.save()
-                    email_body = '<h1> Hello ' + user.username + ', Greetings from MFCVIT, </h1>' + 'Your account has been successfully activated \n' + 'You will be notified for the recruitment test soon.'
+                    email_body = '<h1> Hello ' + user.username + ', Greetings from MFCVIT, </h1>' + 'Your account has been successfully activated. \n' + 'You can now go to recruitment portal and attempt test for all domains.'
                     data = {'email_body': email_body, 'to_email': user.email,
                             'email_subject': 'Account activation successful'}
                     Util.send_email(data)
@@ -185,6 +185,9 @@ def sendtechnicalquestions(request):
                 'error': 'User already attempted Technical Test'
             }
             return Response(error)
+        user = request.user
+        user.technical_test = True
+        user.save()
         tech_domain = Domain.objects.get(domain_name='Technical')
         mcqs = mcqQuestions.objects.filter(domain=tech_domain)
         finalmcqs = random.sample(list(mcqs), 10)
@@ -207,6 +210,9 @@ def sendmanagementquestions(request):
                 'error': 'User already attempted Management Test'
             }
             return Response(error)
+        user = request.user
+        user.management_test = True
+        user.save()
         mang_domain = Domain.objects.get(domain_name='Management')
         type = typeQuestions.objects.filter(domain=mang_domain)
         finaltype = random.sample(list(type), 5)
@@ -225,6 +231,9 @@ def sendeditorialquestions(request):
                 'error': 'User already attempted Editorial Test'
             }
             return Response(error)
+        user = request.user
+        user.editorial_test = True
+        user.save()
         ed_domain = Domain.objects.get(domain_name='Editorial')
         type = typeQuestions.objects.filter(domain=ed_domain)
         shortquestions = []
@@ -255,6 +264,9 @@ def senddesignquestions(request):
                 'error': 'User already attempted Design Test'
             }
             return Response(error)
+        user = request.user
+        user.design_test = True
+        user.save()
         design_domain = Domain.objects.get(domain_name='Design')
         finaltype = typeQuestions.objects.filter(domain=design_domain)
         typeserializer = typeSerializer(finaltype, many=True)
@@ -269,11 +281,11 @@ def senddesignquestions(request):
 def SendTechnicalResponsesAPIView(request):
     if request.method == 'POST':
         serializer = responseSerializer(data=request.data,many=True)
-        if request.user.technical_test:
-            error = {
-                'error': 'User already attempted Technical Test'
-            }
-            return Response(error)
+        # if request.user.technical_test:
+        #     error = {
+        #         'error': 'User already attempted Technical Test'
+        #     }
+        #     return Response(error)
         if serializer.is_valid():
             serializer.save(user=request.user)
             user = request.user
@@ -287,11 +299,11 @@ def SendTechnicalResponsesAPIView(request):
 def SendManagementResponsesAPIView(request):
     if request.method == 'POST':
         serializer = responseSerializer(data=request.data,many=True)
-        if request.user.management_test:
-            error = {
-                'error': 'User already attempted Management Test'
-            }
-            return Response(error)
+        # if request.user.management_test:
+        #     error = {
+        #         'error': 'User already attempted Management Test'
+        #     }
+        #     return Response(error)
         if serializer.is_valid():
             serializer.save(user=request.user)
             user = request.user
@@ -305,11 +317,11 @@ def SendManagementResponsesAPIView(request):
 def SendEditorialResponsesAPIView(request):
     if request.method == 'POST':
         serializer = responseSerializer(data=request.data,many=True)
-        if request.user.editorial_test:
-            error = {
-                'error': 'User already attempted Editorial Test'
-            }
-            return Response(error)
+        # if request.user.editorial_test:
+        #     error = {
+        #         'error': 'User already attempted Editorial Test'
+        #     }
+        #     return Response(error)
         if serializer.is_valid():
             serializer.save(user=request.user)
             user = request.user
@@ -323,11 +335,11 @@ def SendEditorialResponsesAPIView(request):
 def SendDesignResponsesAPIView(request):
     if request.method == 'POST':
         serializer = responseSerializer(data=request.data,many=True)
-        if request.user.design_test:
-            error = {
-                'error': 'User already attempted Design Test'
-            }
-            return Response(error)
+        # if request.user.design_test:
+        #     error = {
+        #         'error': 'User already attempted Design Test'
+        #     }
+        #     return Response(error)
         if serializer.is_valid():
             serializer.save(user=request.user)
             user = request.user
