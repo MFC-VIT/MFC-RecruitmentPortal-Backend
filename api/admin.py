@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import (Domain,mcqQuestions,typeQuestions,Responses,User)
+from .models import (Domain,typeQuestions,Responses,User)
 from django.utils.html import format_html
 import csv
 from django.http import HttpResponse
@@ -31,15 +31,6 @@ class UserAdmin(admin.ModelAdmin,ExportCsvMixin):
 class DomainAdmin(admin.ModelAdmin):
     list_display = ['domain_name','id']
 
-@admin.register(mcqQuestions)
-class mcqQuestionsAdmin(admin.ModelAdmin):
-    list_display = ['domain','question_id','get_question']
-
-    def get_question(self, obj):
-        html = "<img src='" + str(obj.question) + "' style='height:200px;width:300px' />";
-        return format_html(html)
-    get_question.short_description = 'question'
-
 @admin.register(typeQuestions)
 class typeQuestionsAdmin(admin.ModelAdmin):
     list_display = ['domain','question_id','get_question']
@@ -65,13 +56,3 @@ class ResponsesAdmin(admin.ModelAdmin,ExportCsvMixin):
         html = "<img src='" + str(obj.question) + "' style='height:200px;width:300px' />";
         return format_html(html)
     get_question.short_description = 'question'
-
-
-# class MyModelAdmin(admin.ModelAdmin):
-#     ...
-#
-#     list_display = ['get_description', ]
-#
-#     def get_description(self, obj):
-#        return format_html(obj)
-#     get_description.short_description = 'description'

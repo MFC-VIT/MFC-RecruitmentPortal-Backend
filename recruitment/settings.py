@@ -109,7 +109,7 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': datetime.timedelta(minutes=60),
+    'ACCESS_TOKEN_LIFETIME': datetime.timedelta(days=1),
     'REFRESH_TOKEN_LIFETIME': datetime.timedelta(days=1),
 }
 
@@ -132,13 +132,11 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "http://127.0.0.1:8000",
-    "http://127.0.0.1:8081",
-    "http://localhost:8081",
+    "http://localhost:3000",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'localhost:8081',
+    'localhost:3000',
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
@@ -164,9 +162,3 @@ PHONENUMBER_DEFAULT_REGION = 'IN'
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
-django_heroku.settings(locals())

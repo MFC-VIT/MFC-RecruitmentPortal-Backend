@@ -7,14 +7,20 @@ from rest_framework_simplejwt.views import (
 app_name = 'api'
 
 urlpatterns = [
-    path('technicalquestions/', views.sendtechnicalquestions),
-    path('managementquestions/', views.sendmanagementquestions),
-    path('editorialquestions/', views.sendeditorialquestions),
+    path('frontendquestions/', views.sendfrontendquestions),
+    path('backendquestions/', views.sendbackendquestions),
+    path('appquestions/', views.sendappquestions),
+    path('mlquestions/', views.sendmlquestions),
     path('designquestions/', views.senddesignquestions),
-    path('send_tech_responses/', views.SendTechnicalResponsesAPIView, name="send_tech_responses"),
-    path('send_mang_responses/', views.SendManagementResponsesAPIView, name="send_mang_responses"),
-    path('send_edit_responses/', views.SendEditorialResponsesAPIView, name="send_edit_responses"),
+
+
+    path('send_front_responses/', views.SendFrontResponsesAPIView, name="send_front_responses"),
+    path('send_back_responses/', views.SendBackResponsesAPIView, name="send_back_responses"),
+    path('send_app_responses/', views.SendAppResponsesAPIView, name="send_app_responses"),
+    path('send_ml_responses/', views.SendMlResponsesAPIView, name="send_ml_responses"),
     path('send_desg_responses/', views.SendDesignResponsesAPIView, name="send_desg_responses"),
+
+
     path('register/',views.RegisterView.as_view(),name="register"),
     path('email-verify/', views.VerifyEmail.as_view(), name="email-verify"),
     path('login/',views.LoginAPIView.as_view(),name="login"),

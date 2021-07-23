@@ -46,14 +46,11 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     is_verified = models.BooleanField(default=False)
-    technical_test = models.BooleanField(default=False)
-    management_test = models.BooleanField(default=False)
-    editorial_test = models.BooleanField(default=False)
+    frontend_test = models.BooleanField(default=False)
+    backend_test = models.BooleanField(default=False)
+    ml_test = models.BooleanField(default=False)
+    app_test = models.BooleanField(default=False)
     design_test = models.BooleanField(default=False)
-    technical_test_passed = models.BooleanField(default=False)
-    management_test_passed = models.BooleanField(default=False)
-    editorial_test_passed = models.BooleanField(default=False)
-    design_test_passed = models.BooleanField(default=False)
     otp = models.IntegerField(blank=True,null=True)
 
     USERNAME_FIELD = 'email'
@@ -77,22 +74,11 @@ class Domain(models.Model):
     def __str__(self):
         return self.domain_name
 
-class mcqQuestions(models.Model):
-    domain = models.ForeignKey(Domain,on_delete=models.CASCADE,related_name="domain_mcq_questions")
-    question_id = models.CharField(max_length=250, unique=True, primary_key=True)
-    question = models.TextField()
-    option_1 = models.CharField(max_length=500)
-    option_2 = models.CharField(max_length=500)
-    option_3 = models.CharField(max_length=500)
-    option_4 = models.CharField(max_length=500)
-
-    def __str__(self):
-        return self.question
-
 class typeQuestions(models.Model):
     domain = models.ForeignKey(Domain,on_delete=models.CASCADE,related_name="domain_type_questions")
     question_id = models.CharField(max_length=250, unique=True, primary_key=True)
     question = models.TextField()
+    link = models.CharField(max_length=250, blank=True, null=True)
 
     def __str__(self):
         return self.question
@@ -105,20 +91,3 @@ class Responses(models.Model):
 
     def __str__(self):
         return self.question
-
-
-
-# from django.contrib.auth.models import AbstractUser
-
-# class MyUser(AbstractUser):
-#     username_validator = MyValidator()
-#     username = models.CharField(
-#         _('username'),
-#         max_length=150,
-#         unique=True,
-#         help_text=_('Required. 150 characters or fewer. Letters, digits and @/./ /-/_ only.'),
-#         validators=[username_validator],
-#             error_messages={
-#             'unique': _("A user with that username already exists."),
-#         },
-#     )
