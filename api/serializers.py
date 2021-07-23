@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Domain,mcqQuestions,typeQuestions,Responses,User
+from .models import Domain,typeQuestions,Responses,User
 from django.contrib import auth
 from rest_framework.exceptions import AuthenticationFailed
 from rest_framework_simplejwt.tokens import RefreshToken, TokenError
@@ -71,16 +71,16 @@ class LoginSerializer(serializers.ModelSerializer):
         }
 
 
-class mcqSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = mcqQuestions
-        fields = ('question_id','question','option_1','option_2','option_3','option_4')
+# class mcqSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = mcqQuestions
+#         fields = ('question_id','question','option_1','option_2','option_3','option_4')
 
 
 class typeSerializer(serializers.ModelSerializer):
     class Meta:
         model = typeQuestions
-        fields = ('question_id', 'question')
+        fields = ('question_id', 'question','link')
 
 class responseSerializer(serializers.ModelSerializer):
     class Meta:
