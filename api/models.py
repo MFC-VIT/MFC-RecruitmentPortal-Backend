@@ -51,6 +51,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     ml_test = models.BooleanField(default=False)
     app_test = models.BooleanField(default=False)
     design_test = models.BooleanField(default=False)
+    uiux_test = models.BooleanField(default=False)
+    video_test = models.BooleanField(default=False)
     otp = models.IntegerField(blank=True,null=True)
 
     USERNAME_FIELD = 'email'
