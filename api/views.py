@@ -239,6 +239,36 @@ def senddesignquestions(request):
         }
         return Response(finalquestions)
 
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def senduiuxquestions(request):
+    if request.method == 'GET':
+        user = request.user
+        user.uiux_test = True
+        user.save()
+        uiux_domain = Domain.objects.get(domain_name='uiux')
+        type_questions = typeQuestions.objects.filter(domain=uiux_domain)
+        typeserializer = typeSerializer(type_questions, many=True)
+        finalquestions = {
+            'write':typeserializer.data
+        }
+        return Response(finalquestions,status=status.HTTP_200_OK)
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def sendvideoquestions(request):
+    if request.method == 'GET':
+        user = request.user
+        user.video_test = True
+        user.save()
+        video_domain = Domain.objects.get(domain_name='video')
+        type_questions = typeQuestions.objects.filter(domain=video_domain)
+        typeserializer = typeSerializer(type_questions, many=True)
+        finalquestions = {
+            'write':typeserializer.data
+        }
+        return Response(finalquestions,status=status.HTTP_200_OK)
+
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
@@ -248,7 +278,7 @@ def SendFrontResponsesAPIView(request):
             answers = Responses.objects.filter(user=request.user,domain=Domain.objects.get(domain_name='frontend'))
             answers.delete()
 
-        serializer = responseSerializer(data=request.data,many=True)        
+        serializer = responseSerializer(data=request.data,many=True)
         if serializer.is_valid():
             serializer.save(user=request.user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -262,7 +292,7 @@ def SendBackResponsesAPIView(request):
             answers = Responses.objects.filter(user=request.user,domain=Domain.objects.get(domain_name='backend'))
             answers.delete()
 
-        serializer = responseSerializer(data=request.data,many=True)        
+        serializer = responseSerializer(data=request.data,many=True)
         if serializer.is_valid():
             serializer.save(user=request.user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -276,7 +306,7 @@ def SendAppResponsesAPIView(request):
             answers = Responses.objects.filter(user=request.user,domain=Domain.objects.get(domain_name='app'))
             answers.delete()
 
-        serializer = responseSerializer(data=request.data,many=True)        
+        serializer = responseSerializer(data=request.data,many=True)
         if serializer.is_valid():
             serializer.save(user=request.user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -290,7 +320,7 @@ def SendMlResponsesAPIView(request):
             answers = Responses.objects.filter(user=request.user,domain=Domain.objects.get(domain_name='ml'))
             answers.delete()
 
-        serializer = responseSerializer(data=request.data,many=True)        
+        serializer = responseSerializer(data=request.data,many=True)
         if serializer.is_valid():
             serializer.save(user=request.user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -304,7 +334,36 @@ def SendDesignResponsesAPIView(request):
             answers = Responses.objects.filter(user=request.user,domain=Domain.objects.get(domain_name='design'))
             answers.delete()
 
-        serializer = responseSerializer(data=request.data,many=True)        
+        serializer = responseSerializer(data=request.data,many=True)
+        if serializer.is_valid():
+            serializer.save(user=request.user)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def SendUiuxResponsesAPIView(request):
+    if request.method == 'POST':
+        if request.user.uiux_test:
+            answers = Responses.objects.filter(user=request.user,domain=Domain.objects.get(domain_name='uiux'))
+            answers.delete()
+
+        serializer = responseSerializer(data=request.data,many=True)
+        if serializer.is_valid():
+            serializer.save(user=request.user)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def SendVideoResponsesAPIView(request):
+    if request.method == 'POST':
+        if request.user.video_test:
+            answers = Responses.objects.filter(user=request.user,domain=Domain.objects.get(domain_name='video'))
+            answers.delete()
+
+        serializer = responseSerializer(data=request.data,many=True)
         if serializer.is_valid():
             serializer.save(user=request.user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
