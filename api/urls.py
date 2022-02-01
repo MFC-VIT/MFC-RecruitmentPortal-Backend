@@ -1,4 +1,4 @@
-from django.urls import path, include
+from django.urls import path
 from api import views
 from rest_framework_simplejwt.views import (
     TokenRefreshView,
@@ -11,10 +11,12 @@ urlpatterns = [
     path('managementquestions/', views.sendmanagementquestions),
     path('editorialquestions/', views.sendeditorialquestions),
     path('designquestions/', views.senddesignquestions),
+    path('mediaquestions/', views.sendmediaquestions),
     path('send_tech_responses/', views.SendTechnicalResponsesAPIView, name="send_tech_responses"),
     path('send_mang_responses/', views.SendManagementResponsesAPIView, name="send_mang_responses"),
     path('send_edit_responses/', views.SendEditorialResponsesAPIView, name="send_edit_responses"),
     path('send_desg_responses/', views.SendDesignResponsesAPIView, name="send_desg_responses"),
+    path('send_media_responses/', views.SendMediaResponsesAPIView, name="send_media_responses"),
     path('register/',views.RegisterView.as_view(),name="register"),
     path('email-verify/', views.VerifyEmail.as_view(), name="email-verify"),
     path('login/',views.LoginAPIView.as_view(),name="login"),

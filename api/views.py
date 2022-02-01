@@ -1,29 +1,17 @@
-from rest_framework import viewsets,generics,status,views,permissions
+from rest_framework import generics, status, views, permissions
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
-from .models import Domain,mcqQuestions,typeQuestions,Responses, User
-from .serializers import (mcqSerializer, typeSerializer,
-                            RegisterSerializer,LoginSerializer,
-                            responseSerializer, LogoutSerializer,
-                            EmailVerificationSerializer,
-                            ResetPasswordEmailRequestSerializer,
-                            SetNewPasswordSerializer)
-from rest_framework.generics import ListCreateAPIView
+from .models import *
+from .serializers import *
 import random
-from django.shortcuts import render
 from rest_framework_simplejwt.tokens import RefreshToken
-import jwt
-from django.conf import settings
-from drf_yasg.utils import swagger_auto_schema
-from drf_yasg import openapi
 from django.contrib.sites.shortcuts import get_current_site
 from django.urls import reverse
 from .utils import Util
-from django.shortcuts import redirect
 from .renderers import UserRenderer
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
-from django.utils.encoding import smart_str, force_str, smart_bytes, DjangoUnicodeDecodeError
+from django.utils.encoding import smart_str, smart_bytes, DjangoUnicodeDecodeError
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 
 # Create your views here.
@@ -38,10 +26,11 @@ def generate_otp():
     return otp
 
 ###########################################################
-class RegisterView(generics.GenericAPIView):
 
+class RegisterView(generics.GenericAPIView):
     serializer_class = RegisterSerializer
     renderer_classes = (UserRenderer,)
+
     def post(self,request):
         user=request.data
         serializer = self.serializer_class(data=user)
@@ -62,6 +51,7 @@ class RegisterView(generics.GenericAPIView):
 
 class VerifyEmail(views.APIView):
     serializer_class = EmailVerificationSerializer
+    
     def post(self, request):
         otp = request.data['otp']
         email = request.data['email']
@@ -90,6 +80,7 @@ class LoginAPIView(generics.GenericAPIView):
 
 class RequestPasswordResetEmail(generics.GenericAPIView):
     serializer_class = ResetPasswordEmailRequestSerializer
+    
     def post(self, request):
         serializer = self.serializer_class(data=request.data)
         email = request.data.get('email', '')
@@ -106,29 +97,6 @@ class RequestPasswordResetEmail(generics.GenericAPIView):
                     'email_subject': 'Reset your passsword'}
             Util.send_email(data)
         return Response({'success': 'We have sent you a link to reset your password'}, status=status.HTTP_200_OK)
-
-# class PasswordTokenCheckAPI(generics.GenericAPIView):
-#     serializer_class = SetNewPasswordSerializer
-#     def get(self, request, uidb64, token):
-#         redirect_url = request.GET.get('redirect_url')
-#         try:
-#             id = smart_str(urlsafe_base64_decode(uidb64))
-#             user = User.objects.get(id=id)
-#             if not PasswordResetTokenGenerator().check_token(user, token):
-#                 if len(redirect_url) > 3:
-#                     return CustomRedirect(redirect_url+'?token_valid=False')
-#                 else:
-#                     return CustomRedirect(os.environ.get('FRONTEND_URL', '')+'?token_valid=False')
-#             if redirect_url and len(redirect_url) > 3:
-#                 return CustomRedirect(redirect_url+'?token_valid=True&message=Credentials Valid&uidb64='+uidb64+'&token='+token)
-#             else:
-#                 return CustomRedirect(os.environ.get('FRONTEND_URL', '')+'?token_valid=False')
-#         except DjangoUnicodeDecodeError as identifier:
-#             try:
-#                 if not PasswordResetTokenGenerator().check_token(user):
-#                     return CustomRedirect(redirect_url+'?token_valid=False')
-#             except UnboundLocalError as e:
-#                 return Response({'error': 'Token is not valid, please request a new one'}, status=status.HTTP_400_BAD_REQUEST)
 
 class PasswordTokenCheckAPI(generics.GenericAPIView):
     serializer_class = SetNewPasswordSerializer
@@ -155,11 +123,13 @@ class SetNewPasswordAPIView(generics.GenericAPIView):
 class LogoutAPIView(generics.GenericAPIView):
     serializer_class = LogoutSerializer
     permission_classes = (permissions.IsAuthenticated,)
+    
     def post(self, request):
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response({'success':'User successfully logged out'},status=status.HTTP_200_OK)
+
 ###################################
 
 @api_view(['GET'])
@@ -171,9 +141,9 @@ def user_tests(request):
         'management': user.management_test,
         'editorial': user.editorial_test,
         'design': user.design_test,
+        'media': user.media_test
     }
     return Response(tests)
-
 
 
 @api_view(['GET'])
@@ -190,16 +160,17 @@ def sendtechnicalquestions(request):
         user.save()
         tech_domain = Domain.objects.get(domain_name='Technical')
         mcqs = mcqQuestions.objects.filter(domain=tech_domain)
-        finalmcqs = random.sample(list(mcqs), 10)
+        finalmcqs = random.sample(list(mcqs), 5)
         mcqserializer = mcqSerializer(finalmcqs, many=True)
         type = typeQuestions.objects.filter(domain=tech_domain)
-        finaltype = random.sample(list(type), 2)
+        finaltype = random.sample(list(type), 7)
         typeserializer = typeSerializer(finaltype, many=True)
         finalquestions = {
             'mcq':mcqserializer.data,
             'write':typeserializer.data
         }
         return Response(finalquestions)
+
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
@@ -215,12 +186,13 @@ def sendmanagementquestions(request):
         user.save()
         mang_domain = Domain.objects.get(domain_name='Management')
         type = typeQuestions.objects.filter(domain=mang_domain)
-        finaltype = random.sample(list(type), 5)
+        finaltype = random.sample(list(type), 8)
         typeserializer = typeSerializer(finaltype, many=True)
         finalquestions = {
             'write':typeserializer.data
         }
         return Response(finalquestions)
+
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
@@ -236,24 +208,13 @@ def sendeditorialquestions(request):
         user.save()
         ed_domain = Domain.objects.get(domain_name='Editorial')
         type = typeQuestions.objects.filter(domain=ed_domain)
-        shortquestions = []
-        longquestions = []
-        for question in type:
-            if 'ed_long' in question.question_id:
-                longquestions.append(question)
-            else:
-                shortquestions.append(question)
-        random_short = random.sample(list(shortquestions), 3)
-        random_long = random.sample(list(longquestions), 3)
-        typeshortserializer = typeSerializer(random_short, many=True)
-        typelongserializer = typeSerializer(random_long, many=True)
+        finaltype = random.sample(list(type), 10)
+        typeserializer = typeSerializer(finaltype, many=True)
         finalquestions = {
-            'write': {
-                'long': typelongserializer.data,
-                'short': typeshortserializer.data
-            }
+            'write': typeserializer.data
         }
         return Response(finalquestions)
+
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
@@ -276,16 +237,32 @@ def senddesignquestions(request):
         return Response(finalquestions)
 
 
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def sendmediaquestions(request):
+    if request.method == 'GET':
+        if request.user.media_test:
+            error = {
+                'error': 'User already attempted Media Test'
+            }
+            return Response(error)
+        user = request.user
+        user.media_test = True
+        user.save()
+        media_domain = Domain.objects.get(domain_name='Media')
+        finaltype = typeQuestions.objects.filter(domain=media_domain)
+        typeserializer = typeSerializer(finaltype, many=True)
+        finalquestions = {
+            'write':typeserializer.data
+        }
+        return Response(finalquestions)
+
+
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def SendTechnicalResponsesAPIView(request):
     if request.method == 'POST':
         serializer = responseSerializer(data=request.data,many=True)
-        # if request.user.technical_test:
-        #     error = {
-        #         'error': 'User already attempted Technical Test'
-        #     }
-        #     return Response(error)
         if serializer.is_valid():
             serializer.save(user=request.user)
             user = request.user
@@ -294,16 +271,12 @@ def SendTechnicalResponsesAPIView(request):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def SendManagementResponsesAPIView(request):
     if request.method == 'POST':
         serializer = responseSerializer(data=request.data,many=True)
-        # if request.user.management_test:
-        #     error = {
-        #         'error': 'User already attempted Management Test'
-        #     }
-        #     return Response(error)
         if serializer.is_valid():
             serializer.save(user=request.user)
             user = request.user
@@ -312,16 +285,12 @@ def SendManagementResponsesAPIView(request):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def SendEditorialResponsesAPIView(request):
     if request.method == 'POST':
         serializer = responseSerializer(data=request.data,many=True)
-        # if request.user.editorial_test:
-        #     error = {
-        #         'error': 'User already attempted Editorial Test'
-        #     }
-        #     return Response(error)
         if serializer.is_valid():
             serializer.save(user=request.user)
             user = request.user
@@ -330,20 +299,30 @@ def SendEditorialResponsesAPIView(request):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def SendDesignResponsesAPIView(request):
     if request.method == 'POST':
         serializer = responseSerializer(data=request.data,many=True)
-        # if request.user.design_test:
-        #     error = {
-        #         'error': 'User already attempted Design Test'
-        #     }
-        #     return Response(error)
         if serializer.is_valid():
             serializer.save(user=request.user)
             user = request.user
             user.design_test = True
+            user.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def SendMediaResponsesAPIView(request):
+    if request.method == 'POST':
+        serializer = responseSerializer(data=request.data,many=True)
+        if serializer.is_valid():
+            serializer.save(user=request.user)
+            user = request.user
+            user.media_test = True
             user.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

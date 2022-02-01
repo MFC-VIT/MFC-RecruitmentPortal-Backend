@@ -13,7 +13,7 @@ class MyValidator(UnicodeUsernameValidator):
 
 class UserManager(BaseUserManager):
 
-    def create_user(self, username, email, phone_number,reg_no, password=None):
+    def create_user(self, username, email, phone_number, reg_no, password=None):
         if username is None:
             raise TypeError('Users should have a username')
         if email is None:
@@ -50,10 +50,12 @@ class User(AbstractBaseUser, PermissionsMixin):
     management_test = models.BooleanField(default=False)
     editorial_test = models.BooleanField(default=False)
     design_test = models.BooleanField(default=False)
+    media_test = models.BooleanField(default=False)
     technical_test_passed = models.BooleanField(default=False)
     management_test_passed = models.BooleanField(default=False)
     editorial_test_passed = models.BooleanField(default=False)
     design_test_passed = models.BooleanField(default=False)
+    media_test_passed = models.BooleanField(default=False)
     otp = models.IntegerField(blank=True,null=True)
 
     USERNAME_FIELD = 'email'
