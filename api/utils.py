@@ -2,6 +2,7 @@ from django.core.mail import EmailMessage
 import os
 import smtplib
 import yagmail
+from django.core.mail import send_mail
 
 
 class Util:
